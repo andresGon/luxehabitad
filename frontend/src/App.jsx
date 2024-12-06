@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import CardMain from './components/cardMain/CardMain';
 
 function App() {
   const [products, setProducts] = useState([]); // Estado para almacenar los productos
@@ -22,16 +23,14 @@ function App() {
   return (
     <>
       <h1>Lista de Productos</h1>
-      <ul>
+      <div className="product-list">
         {products.map((product) => (
-          <li key={product.id}> {/* Usa una clave única como id */}
-            <h2>{product.nombre}</h2>
-            <img src={product.imagenes[0]} alt="" />
-            <p>{product.descripcion}</p>
-            <p>Precio: ${product.precio}</p>
-          </li>
+          <CardMain
+            key={product.id} // Clave única para cada producto
+            product={product} // Pasar el producto completo como prop
+          />
         ))}
-      </ul>
+      </div>
     </>
   );
 }

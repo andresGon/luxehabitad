@@ -1,0 +1,82 @@
+/* Fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.card-main {
+  font-family: 'Roboto', sans-serif;
+  width: 300px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative; /* Contenedor relativo para posicionar los flags */
+  background-color: #f1f1f1; /* Fondo gris */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px; /* Se aplica el borde redondeado aquí */
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+
+.flags {
+  position: absolute; /* Superpone los flags sobre la imagen */
+  top: 10px; /* Espacio desde la parte superior */
+  left: 10px; /* Espacio desde el lado izquierdo */
+  display: flex;
+  flex-direction: column; /* Coloca los flags en una columna */
+  gap: 5px; /* Espacio entre los flags */
+}
+
+.flag {
+  font-size: 14px;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.discount {
+  background-color: #00c8c8; /* Color para el porcentaje */
+}
+
+.hot {
+  background-color: #ff4136; /* Color para el "Hot" */
+}
+
+.product-details {
+  margin-top: 10px; /* Margen superior para separar los detalles */
+}
+
+.product-title {
+  font-size: 14px; /* Tamaño de fuente ajustado */
+  font-weight: 400;
+  color: #333;
+  text-align: left; /* Alineado a la izquierda */
+  margin: 0; /* Eliminadas las márgenes */
+}
+
+.product-prices {
+  display: flex;
+  justify-content: flex-start; /* Alineado a la izquierda */
+  align-items: center;
+  gap: 10px;
+  margin: 0; /* Eliminadas las márgenes */
+}
+
+.price-current {
+  font-size: 12px; /* Tamaño de fuente ajustado */
+  font-weight: 700;
+  color: #333;
+}
+
+.price-old {
+  font-size: 12px; /* Tamaño de fuente ajustado */
+  font-weight: 400;
+  color: #aaa;
+  text-decoration: line-through;
+}
