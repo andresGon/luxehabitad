@@ -1,34 +1,36 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchProducts } from './services/productService';
 import CardMain from './components/cardMain/CardMain';
+import Header from './components/Header/Header'; // Importar el componente Header
+import './styles/main.scss';
 
 function App() {
-  const [products, setProducts] = useState([]); // Estado para almacenar los productos
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Función para obtener los datos del backend
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/products');
-      setProducts(response.data); // Almacena los productos en el estado
-    } catch (error) {
-      console.error('Error al obtener los datos:', error);
-    }
-  };
-
-  // Usar useEffect para llamar a fetchData al montar el componente
   useEffect(() => {
-    fetchData();
+    const loadProducts = async () => {
+      try {
+        const data = await fetchProducts();
+        setProducts(data);
+      } catch (error) {
+        setError('Error al cargar los productos.');
+      }
+    };
+
+    loadProducts();
   }, []);
+
+  if (error) return <p>{error}</p>;
 
   return (
     <>
+      <Header /> {/* Usar el componente Header */}
       <h1>Lista de Productos</h1>
       <div className="product-list">
         {products.map((product) => (
-          <CardMain
-            key={product.id} // Clave única para cada producto
-            product={product} // Pasar el producto completo como prop
-          />
+          <CardMain key={product._id} product={product} />
         ))}
       </div>
     </>
